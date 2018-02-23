@@ -1,0 +1,10 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+
+before_script:
+  - composer install --no-progress --no-interaction --prefer-dist --no-suggest
+
+script: vendor/bin/phpunit --verbose
