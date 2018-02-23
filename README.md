@@ -1,6 +1,4 @@
-# Laravel Short Url
-
-[![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url)
+# Laravel Short Url [![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url)
 
 Laravel Short Url is a package allowing you to shorten urls.
 
