@@ -5,11 +5,11 @@ namespace Gallib\ShortUrl;
 class Hasher
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $length = 6;
 
-    public function setLength(int $length): Hasher
+    public function setLength(int $length): self
     {
         $this->length = $length;
 
@@ -17,7 +17,7 @@ class Hasher
     }
 
     /**
-     * Generate a random hash
+     * Generate a random hash.
      *
      * @return string
      */

@@ -10,7 +10,8 @@ class RedirectController extends Controller
     /**
      * Redirect to url by its code.
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return \Illuminate\Http\Response
      */
     public function redirect($code)
