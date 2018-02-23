@@ -13,10 +13,10 @@ class ShortUrlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'shorturl');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'shorturl');
 
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             $this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/shorturl'),
