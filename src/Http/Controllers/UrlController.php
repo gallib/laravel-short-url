@@ -22,7 +22,8 @@ class UrlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Gallib\ShortUrl\Http\Requests\UrlRequest  $request
+     * @param \Gallib\ShortUrl\Http\Requests\UrlRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(UrlRequest $request)
