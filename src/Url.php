@@ -26,7 +26,8 @@ class Url extends Model
     /**
      * Set the code.
      *
-     * @param  string  $code
+     * @param string $code
+     *
      * @return void
      */
     public function setCodeAttribute($code)

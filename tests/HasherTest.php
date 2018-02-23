@@ -4,7 +4,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class HashTest extends TestCase
+class HasherTest extends TestCase
 {
     use RefreshDatabase;
 
