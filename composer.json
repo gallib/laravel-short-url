@@ -1,0 +1,42 @@
+{
+    "name": "gallib/laravel-short-url",
+    "description": "A Laravel package to shorten urls",
+    "keywords": ["laravel", "package", "url", "shortener"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alain Pellaux",
+            "email": "alain@gallib.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/contracts": "5.6.*",
+        "illuminate/database": "5.6.*",
+        "illuminate/routing": "5.6.*",
+        "illuminate/support": "5.6.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gallib\\ShortUrl\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gallib\\ShortUrl\\ShortUrlServiceProvider"
+            ],
+            "aliases": {
+                "Hasher": "Gallib\\ShortUrl\\Facades\\Hasher"
+            }
+        }
+    }
+}
