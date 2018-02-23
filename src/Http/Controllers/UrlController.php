@@ -2,10 +2,10 @@
 
 namespace Gallib\ShortUrl\Http\Controllers;
 
-use Gallib\ShortUrl\Http\Requests\UrlRequest;
-use Gallib\ShortUrl\Http\Responses\UrlResponse;
 use Gallib\ShortUrl\Url;
 use Illuminate\Routing\Controller;
+use Gallib\ShortUrl\Http\Requests\UrlRequest;
+use Gallib\ShortUrl\Http\Responses\UrlResponse;
 
 class UrlController extends Controller
 {
