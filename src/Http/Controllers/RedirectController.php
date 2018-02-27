@@ -16,7 +16,9 @@ class RedirectController extends Controller
      */
     public function redirect($code)
     {
-        $url = Url::whereCode($code)->first();
+        $url = \Cache::rememberForever("url.$code", function () use ($code) {
+            return Url::whereCode($code)->first();
+        });
 
         if ($url !== null) {
             return redirect()->away($url->url, 301);
