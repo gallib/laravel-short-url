@@ -19,6 +19,10 @@ class ShortUrlServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             $this->publishes([
+                __DIR__.'/../config/shorturl.php' => config_path('shorturl.php'),
+            ], 'shorturl-config');
+
+            $this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/shorturl'),
             ], 'shorturl-views');
         }
