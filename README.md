@@ -17,11 +17,6 @@ php artisan vendor:publish --provider="Gallib\ShortUrl\ShortUrlServiceProvider"
 php artisan migrate
 ```
 
-And that's all. Laravel short url is now set up on your homepage.
+finally, paste ``` ShortUrl::routes(); ``` at the end of ``` routes/web.php ```
 
-## Configuration
-
-Laravel Short Url configuration file could be found on ``` config/shorturl.php ```
-
-- **route_form_prefix** : Prefix the form to shorten an url
-- **route_redirect_prefix** : Prefix the code of the short url
+Nice! Laravel short url is now set up on your homepage.
