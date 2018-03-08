@@ -26,8 +26,6 @@ class ShortUrlServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/shorturl'),
             ], 'shorturl-views');
         }
-
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     /**

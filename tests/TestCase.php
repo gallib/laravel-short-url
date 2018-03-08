@@ -30,6 +30,8 @@ abstract class TestCase extends OrchestraTestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+
+        \ShortUrl::routes();
     }
 
     /**
@@ -63,6 +65,7 @@ abstract class TestCase extends OrchestraTestCase
     {
         return [
             'Hasher' => 'Gallib\ShortUrl\Facades\Hasher',
+            'ShortUrl' => 'Gallib\ShortUrl\Facades\ShortUrl',
         ];
     }
 }
