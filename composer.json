@@ -35,7 +35,8 @@
                 "Gallib\\ShortUrl\\ShortUrlServiceProvider"
             ],
             "aliases": {
-                "Hasher": "Gallib\\ShortUrl\\Facades\\Hasher"
+                "Hasher": "Gallib\\ShortUrl\\Facades\\Hasher",
+                "ShortUrl": "Gallib\\ShortUrl\\Facades\\ShortUrl"
             }
         }
     }

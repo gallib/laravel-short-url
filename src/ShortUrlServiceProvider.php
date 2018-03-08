@@ -42,5 +42,11 @@ class ShortUrlServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(Hasher::class, 'hasher');
+
+        $this->app->singleton(ShortUrl::class, function () {
+            return new ShortUrl();
+        });
+
+        $this->app->alias(ShortUrl::class, 'shorturl');
     }
 }
