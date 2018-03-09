@@ -23,9 +23,9 @@
                 <div class="col-12">
                     <h1 class="text-center mb-5">Laravel Short Url</h1>
                     @if (session('short_url'))
-                    <div class="alert alert-success" role="alert">
-                        Your shortened url is: <a class="font-weight-bold" href="{{ session('short_url') }}" title="your shortened url">{{ session('short_url') }}</a>
-                    </div>
+                        <div class="alert alert-success" role="alert">
+                            Your shortened url is: <a class="font-weight-bold" href="{{ session('short_url') }}" title="your shortened url">{{ session('short_url') }}</a>
+                        </div>
                     @endif
                     <form method="POST" action="{{ route('shorturl.url.store') }}">
                         @csrf
