@@ -10,6 +10,17 @@ use Gallib\ShortUrl\Http\Responses\UrlResponse;
 class UrlController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $urls = Url::paginate(config('shorturl.items_per_page'));
+
+        return view('shorturl::urls.index', compact('urls'));
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

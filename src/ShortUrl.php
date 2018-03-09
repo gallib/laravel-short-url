@@ -13,6 +13,7 @@ class ShortUrl
     {
         \Route::get('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@create')->name('shorturl.url.create');
         \Route::post('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@store')->name('shorturl.url.store');
+        \Route::get('/list', '\Gallib\ShortUrl\Http\Controllers\UrlController@index')->name('shorturl.url.index');
     }
 
     /**
