@@ -22,20 +22,4 @@ class Url extends Model
         'url',
         'code',
     ];
-
-    /**
-     * Set the code.
-     *
-     * @param string $code
-     *
-     * @return void
-     */
-    public function setCodeAttribute($code)
-    {
-        while (static::whereCode($code)->exists()) {
-            $code = \Hasher::generate();
-        }
-
-        $this->attributes['code'] = $code;
-    }
 }
