@@ -19,7 +19,6 @@
                 justify-content: flex-end;
             }
         </style>
-
     </head>
     <body>
         <div class="container h-100">
@@ -37,7 +36,7 @@
                                 <td>{{ $url->url }}</td>
                                 <td>{{ $url->code }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-primary" href="#" role="button">Edit</a>
+                                    <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.edit', $url->id) }}" role="button">Edit</a>
                                     <a class="btn btn-sm btn-danger" href="#" role="button">Delete</a>
                                 </td>
                             </tr>

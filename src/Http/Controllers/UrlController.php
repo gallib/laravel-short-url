@@ -46,4 +46,35 @@ class UrlController extends Controller
 
         return new UrlResponse($url);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $url = Url::findOrFail($id);
+
+        return view('shorturl::urls.edit', compact('url'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Gallib\ShortUrl\Http\Requests\UrlRequest  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UrlRequest $request, $id)
+    {
+        $url = Url::findOrFail($id);
+
+        \Cache::forget("url.{$url['code']}");
+
+        $url->update($request->all());
+
+        return new UrlResponse($url);
+    }
 }
