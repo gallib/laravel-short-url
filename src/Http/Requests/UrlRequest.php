@@ -29,11 +29,9 @@ class UrlRequest extends FormRequest
             $uniqueCode .= ',id,'.$this->get('id');
         }
 
-        $codeNotIn = config('shorturl.route_form_prefix') ? '|not_in:'.config('shorturl.route_form_prefix') : '';
-
         return [
             'url'  => 'required|url',
-            'code' => 'max:255'.$uniqueCode.$codeNotIn,
+            'code' => 'max:255'.$uniqueCode,
         ];
     }
 
