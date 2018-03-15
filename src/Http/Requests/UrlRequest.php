@@ -25,8 +25,8 @@ class UrlRequest extends FormRequest
     {
         $uniqueCode = '|unique:shorturl_urls';
 
-        if ($this->get('id')) {
-            $uniqueCode .= ',id,'.$this->get('id');
+        if ($this->route('id')) {
+            $uniqueCode .= ',id,'.$this->route('id');
         }
 
         return [
