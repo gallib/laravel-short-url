@@ -20,6 +20,7 @@ class UrlController extends Controller
 
         return view('shorturl::urls.index', compact('urls'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
