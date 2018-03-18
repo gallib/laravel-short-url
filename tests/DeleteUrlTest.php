@@ -45,9 +45,9 @@ class DeleteUrlTest extends TestCase
     {
         $url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
 
-        $response = $this->delete(route('shorturl.url.destroy', ['id' => $url['id']]));
+        $response = $this->deleteJson(route('shorturl.url.destroy', ['id' => $url['id']]));
 
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(204, $response->status());
     }
 
      /** @test */
