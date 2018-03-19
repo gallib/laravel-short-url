@@ -50,7 +50,7 @@ class DeleteUrlTest extends TestCase
         $this->assertEquals(204, $response->status());
     }
 
-     /** @test */
+    /** @test */
     public function it_generates_a_404_after_deletion()
     {
         $url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
