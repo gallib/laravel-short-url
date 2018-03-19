@@ -14,12 +14,16 @@
             html,body {
                 height: 100vh;
             }
+
+            .wrapper {
+                min-height: 100vh;
+            }
         </style>
 
     </head>
     <body>
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
+            <div class="wrapper row align-items-center">
                 <div class="col-12">
                     <h1 class="text-center mb-5">Laravel Short Url</h1>
                     @if (session('short_url'))
