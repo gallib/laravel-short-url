@@ -19,6 +19,10 @@
                 display: inline-block;
             }
 
+            .wrapper {
+                min-height: 100vh;
+            }
+
             .pagination {
                 justify-content: flex-end;
             }
@@ -26,7 +30,7 @@
     </head>
     <body>
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
+            <div class="wrapper row align-items-center">
                 <div class="col-8 offset-2">
                     <h1 class="text-center mb-5">Laravel Short Url</h1>
                     @if (session('short_url'))
