@@ -15,6 +15,10 @@
                 height: 100vh;
             }
 
+            form {
+                display: inline-block;
+            }
+
             .pagination {
                 justify-content: flex-end;
             }
@@ -25,6 +29,11 @@
             <div class="row h-100 align-items-center">
                 <div class="col-8 offset-2">
                     <h1 class="text-center mb-5">Laravel Short Url</h1>
+                    @if (session('short_url'))
+                        <div class="alert alert-success" role="alert">
+                            Your shortened url has been deleted!
+                        </div>
+                    @endif
                     <table class="table">
                         <tr>
                             <th>Url</th>
@@ -37,7 +46,11 @@
                                 <td>{{ $url->code }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.edit', $url->id) }}" role="button">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="#" role="button">Delete</a>
+                                    <form method="POST" action="{{ route('shorturl.url.destroy', $url->id) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" href="#" role="button">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

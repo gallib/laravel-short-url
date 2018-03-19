@@ -78,4 +78,26 @@ class UrlController extends Controller
 
         return new UrlResponse($url);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $url = Url::findOrFail($id);
+
+        \Cache::forget("url.{$url['code']}");
+
+        $url->delete();
+
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return back()
+            ->with('short_url', true);
+    }
 }

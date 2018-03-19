@@ -15,6 +15,7 @@ class ShortUrl
         \Route::post('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@store')->name('shorturl.url.store');
         \Route::get('/{id}/edit', '\Gallib\ShortUrl\Http\Controllers\UrlController@edit')->name('shorturl.url.edit');
         \Route::put('/{id}', '\Gallib\ShortUrl\Http\Controllers\UrlController@update')->name('shorturl.url.update');
+        \Route::delete('/{id}', '\Gallib\ShortUrl\Http\Controllers\UrlController@destroy')->name('shorturl.url.destroy');
         \Route::get('/list', '\Gallib\ShortUrl\Http\Controllers\UrlController@index')->name('shorturl.url.index');
     }
 
