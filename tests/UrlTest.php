@@ -27,16 +27,6 @@ class UrlTest extends TestCase
     }
 
     /** @test */
-    public function a_code_is_generated_if_none_is_given()
-    {
-        $url = ['url' => 'https://laravel.com'];
-
-        $response = $this->createUrl($url);
-
-        $this->assertNotNull($response['code']);
-    }
-
-    /** @test */
     public function a_code_is_generated_if_given_one_is_empty()
     {
         $url = ['url' => 'https://laravel.com', 'code' => ''];
