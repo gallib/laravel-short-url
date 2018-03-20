@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Gallib\ShortUrl\Url;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeleteUrlTest extends TestCase
