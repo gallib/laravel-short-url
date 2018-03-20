@@ -60,13 +60,13 @@ class UrlTest extends TestCase
     /** @test */
     public function a_given_code_is_lowered()
     {
-        $url = ['url' => 'https://laracasts.com', 'code' => 'AbCdE'];
+        $parameters = ['url' => 'https://laracasts.com', 'code' => 'AbCdE'];
 
-        $response = $this->createUrl($url);
+        $createResponse   = $this->createUrl($parameters);
+        $redirectResponse = $this->get(route('shorturl.redirect', ['code' => strtolower($parameters['code'])]));
 
-        $this->get(route('shorturl.redirect', ['code' => strtolower($url['code'])]));
-
-        $this->assertEquals(strtolower($url['code']), $response['code']);
+        $this->assertEquals(strtolower($parameters['code']), $createResponse['code']);
+        $this->assertEquals(301, $redirectResponse->status());
     }
 
     /** @test */
