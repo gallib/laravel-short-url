@@ -51,7 +51,7 @@ class UrlTest extends TestCase
     {
         $parameters = ['url' => 'https://laracasts.com', 'code' => 'AbCdE'];
 
-        $createResponse   = $this->createUrl($parameters);
+        $createResponse = $this->createUrl($parameters);
         $redirectResponse = $this->get(route('shorturl.redirect', ['code' => strtolower($parameters['code'])]));
 
         $this->assertEquals(strtolower($parameters['code']), $createResponse['code']);
