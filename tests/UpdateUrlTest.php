@@ -9,29 +9,6 @@ class UpdateUrlTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @var \Gallib\ShortUrl\Url;
-     */
-    protected $url;
-
-    /**
-     * Setup the test environment.
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->createUrl();
-    }
-
-    /**
-     * Create an url.
-     */
-    protected function createUrl()
-    {
-        $this->url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
-    }
-
     /** @test */
     public function it_generates_a_404_if_the_url_does_not_exist()
     {
@@ -47,7 +24,7 @@ class UpdateUrlTest extends TestCase
     /** @test */
     public function an_url_can_be_updated()
     {
-        $url = array_merge($this->url, ['url' => 'https://github.com/gallib/laravel-short-url']);
+        $url = array_merge($this->createUrl(), ['url' => 'https://github.com/gallib/laravel-short-url']);
 
         $response = $this->putJson(route('shorturl.url.update', ['id' => $url['id']]), $url)->json();
 

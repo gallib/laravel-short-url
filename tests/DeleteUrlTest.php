@@ -9,29 +9,6 @@ class DeleteUrlTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @var \Gallib\ShortUrl\Url;
-     */
-    protected $url;
-
-    /**
-     * Setup the test environment.
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->createUrl();
-    }
-
-    /**
-     * Create an url.
-     */
-    protected function createUrl()
-    {
-        $this->url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
-    }
-
     /** @test */
     public function it_generates_a_404_if_the_url_does_not_exist()
     {
@@ -43,7 +20,7 @@ class DeleteUrlTest extends TestCase
     /** @test */
     public function an_url_can_be_deleted()
     {
-        $url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
+        $url = $this->createUrl();
 
         $response = $this->deleteJson(route('shorturl.url.destroy', ['id' => $url['id']]));
 
@@ -53,7 +30,7 @@ class DeleteUrlTest extends TestCase
     /** @test */
     public function it_generates_a_404_after_deletion()
     {
-        $url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
+        $url = $this->createUrl();
 
         $this->delete(route('shorturl.url.destroy', ['id' => $url['id']]));
 
@@ -65,7 +42,7 @@ class DeleteUrlTest extends TestCase
     /** @test */
     public function the_cache_is_cleared_after_deletion()
     {
-        $url = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
+        $url = $this->createUrl();
 
         $this->get(route('shorturl.redirect', ['code' => $url['code']]));
 

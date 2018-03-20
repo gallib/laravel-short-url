@@ -12,7 +12,7 @@ class UrlTest extends TestCase
     /** @test */
     public function an_url_can_be_shortened()
     {
-        $response = $this->postJson(route('shorturl.url.store'), ['url' => 'https://laravel.com'])->json();
+        $response = $this->createUrl();
 
         $this->assertNotNull($response['code']);
         $this->assertNotNull($response['short_url']);
@@ -21,7 +21,7 @@ class UrlTest extends TestCase
     /** @test */
     public function an_url_must_be_valid_on_create()
     {
-        $response = $this->postJson(route('shorturl.url.store'), ['url' => 'invalid-url'])->json();
+        $response = $this->createUrl(['url' => 'invalid-url']);
 
         $this->assertArrayHasKey('url', $response['errors']);
     }
@@ -31,7 +31,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com'];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertNotNull($response['code']);
     }
@@ -41,7 +41,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => ''];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertNotNull($response['code']);
     }
@@ -51,7 +51,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => 'abcde'];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertEquals($response['code'], $url['code']);
         $this->assertContains($url['code'], $response['short_url']);
@@ -62,7 +62,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laracasts.com', 'code' => 'AbCdE'];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->get(route('shorturl.redirect', ['code' => strtolower($url['code'])]));
 
@@ -74,7 +74,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => 'abc de\!.'];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertEquals($response['code'], 'abc-de');
     }
@@ -84,7 +84,7 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => str_repeat('a', 256)];
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertArrayHasKey('code', $response['errors']);
     }
@@ -94,9 +94,9 @@ class UrlTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => 'abcde'];
 
-        $this->postJson(route('shorturl.url.store'), $url)->json();
+        $this->createUrl($url);
 
-        $response = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $response = $this->createUrl($url);
 
         $this->assertArrayHasKey('code', $response['errors']);
     }

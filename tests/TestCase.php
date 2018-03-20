@@ -68,4 +68,17 @@ abstract class TestCase extends OrchestraTestCase
             'ShortUrl' => 'Gallib\ShortUrl\Facades\ShortUrl',
         ];
     }
+
+    /**
+     * Create an url.
+     *
+     * @param  array  $parameters
+     * @return array
+     */
+    public function createUrl(array $parameters = [])
+    {
+        $parameters = array_merge(['url' => 'https://laravel.com'], $parameters);
+
+        return $this->postJson(route('shorturl.url.store'), $parameters)->json();
+    }
 }
