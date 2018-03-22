@@ -17,7 +17,8 @@
         "illuminate/support": "5.6.*"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.0"
+        "orchestra/testbench": "~3.0",
+        "codedungeon/phpunit-result-printer": "dev-master"
     },
     "autoload": {
         "psr-4": {
