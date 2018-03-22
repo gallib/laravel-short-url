@@ -21,7 +21,7 @@ class RedirectTest extends TestCase
     {
         $url = ['url' => 'https://laravel.com', 'code' => 'abcde'];
 
-        $this->postJson(route('shorturl.url.store'), $url)->json();
+        $this->createUrl($url);
 
         $response = $this->get(route('shorturl.redirect', ['code' => $url['code']]));
 
@@ -32,8 +32,7 @@ class RedirectTest extends TestCase
     /** @test */
     public function it_redirects_to_the_correct_url_after_update()
     {
-        $url = ['url' => 'https://laravel.com', 'code' => 'abcde'];
-        $url = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $url = $this->createUrl(['code' => 'abcde']);
 
         $url['url'] = 'https://github.com/gallib/laravel-short-url';
         $url['code'] = 'fghij';
@@ -48,8 +47,7 @@ class RedirectTest extends TestCase
     /** @test */
     public function the_cache_is_cleared_after_an_update()
     {
-        $url = ['url' => 'https://laravel.com'];
-        $url = $this->postJson(route('shorturl.url.store'), $url)->json();
+        $url = $this->createUrl();
 
         $this->get(route('shorturl.redirect', ['code' => $url['code']]));
 
