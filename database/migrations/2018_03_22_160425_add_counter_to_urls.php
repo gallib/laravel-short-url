@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddCounterToUrls extends Migration
@@ -13,7 +12,7 @@ class AddCounterToUrls extends Migration
      */
     public function up()
     {
-        Schema::table('shorturl_urls', function($table) {
+        Schema::table('shorturl_urls', function ($table) {
             $table->unsignedInteger('counter')->default(0)->after('code');
         });
     }
