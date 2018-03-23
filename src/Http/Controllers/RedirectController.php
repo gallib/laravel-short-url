@@ -21,6 +21,8 @@ class RedirectController extends Controller
         });
 
         if ($url !== null) {
+            $url->increment('counter');
+
             return redirect()->away($url->url, 301);
         }
 

@@ -42,12 +42,14 @@
                         <tr>
                             <th>Url</th>
                             <th>Code</th>
+                            <th>Counter</th>
                             <th></th>
                         </tr>
                         @foreach ($urls as $url)
                             <tr>
                                 <td>{{ $url->url }}</td>
                                 <td>{{ $url->code }}</td>
+                                <td>{{ $url->counter }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.edit', $url->id) }}" role="button">Edit</a>
                                     <form method="POST" action="{{ route('shorturl.url.destroy', $url->id) }}">

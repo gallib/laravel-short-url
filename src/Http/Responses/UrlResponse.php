@@ -40,6 +40,7 @@ class UrlResponse implements Responsable
                 'code'      => $this->url->code,
                 'url'       => $this->url->url,
                 'short_url' => $shortUrl,
+                'counter'   => $this->url->counter,
             ], 201);
         }
 
