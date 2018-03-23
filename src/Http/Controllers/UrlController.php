@@ -16,7 +16,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        $urls = Url::paginate(config('shorturl.items_per_page'));
+        $urls = Url::orderBy('created_at', 'desc')->paginate(config('shorturl.items_per_page'));
 
         return view('shorturl::urls.index', compact('urls'));
     }
