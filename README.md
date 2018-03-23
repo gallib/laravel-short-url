@@ -19,4 +19,15 @@ php artisan migrate
 
 finally, paste ``` ShortUrl::routes(); ``` at the end of ``` routes/web.php ```
 
-Nice! Laravel short url is now set up on your homepage.
+### Advanced configuration
+
+Instead of adding ``` ShortUrl::routes(); ``` you can call three separates methods:
+- ``` ShortUrl::createRoutes(); ``` to shorten urls
+- ``` ShortUrl::manageRoutes(); ``` to manage urls
+- ``` ShortUrl::redirectRoute(); ``` to redirect to the url
+
+this allows you to add middlewares or prefix routes.
+
+## Nice!
+
+Laravel short url is now set up on your homepage.
