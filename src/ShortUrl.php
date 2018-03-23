@@ -5,14 +5,23 @@ namespace Gallib\ShortUrl;
 class ShortUrl
 {
     /**
+     * Register the routes to create urls.
+     *
+     * @return void
+     */
+    public function createRoutes()
+    {
+        \Route::get('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@create')->name('shorturl.url.create');
+        \Route::post('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@store')->name('shorturl.url.store');
+    }
+
+    /**
      * Register the routes to manage urls.
      *
      * @return void
      */
     public function manageRoutes()
     {
-        \Route::get('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@create')->name('shorturl.url.create');
-        \Route::post('/', '\Gallib\ShortUrl\Http\Controllers\UrlController@store')->name('shorturl.url.store');
         \Route::get('/{id}/edit', '\Gallib\ShortUrl\Http\Controllers\UrlController@edit')->name('shorturl.url.edit');
         \Route::put('/{id}', '\Gallib\ShortUrl\Http\Controllers\UrlController@update')->name('shorturl.url.update');
         \Route::delete('/{id}', '\Gallib\ShortUrl\Http\Controllers\UrlController@destroy')->name('shorturl.url.destroy');
@@ -36,6 +45,7 @@ class ShortUrl
      */
     public function routes()
     {
+        $this->createRoutes();
         $this->manageRoutes();
         $this->redirectRoute();
     }
