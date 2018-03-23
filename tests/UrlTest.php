@@ -89,4 +89,12 @@ class UrlTest extends TestCase
 
         $this->assertArrayHasKey('code', $response['errors']);
     }
+
+    /** @test */
+    public function counter_is_equals_to_zero_on_creation()
+    {
+        $url = $this->createUrl();
+
+        $this->assertEquals($url['counter'], 0);
+    }
 }

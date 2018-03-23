@@ -59,4 +59,18 @@ class RedirectTest extends TestCase
 
         $this->assertEquals($url['url'], $response->headers->get('Location'));
     }
+
+    /** @test */
+    public function it_increments_counter_on_redirect()
+    {
+        $url = $this->createUrl();
+
+        $this->get(route('shorturl.redirect', ['code' => $url['code']]));
+        $this->get(route('shorturl.redirect', ['code' => $url['code']]));
+        $this->get(route('shorturl.redirect', ['code' => $url['code']]));
+
+        $url = \Gallib\ShortUrl\Url::whereId($url['id'])->first();
+
+        $this->assertEquals($url->counter, 3);
+    }
 }
