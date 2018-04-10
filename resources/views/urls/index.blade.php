@@ -41,14 +41,14 @@
                     <table class="table">
                         <tr>
                             <th>Url</th>
-                            <th>Code</th>
+                            <th>Short Url</th>
                             <th>Counter</th>
                             <th></th>
                         </tr>
                         @foreach ($urls as $url)
                             <tr>
                                 <td>{{ $url->url }}</td>
-                                <td>{{ $url->code }}</td>
+                                <td><a href="{{ route('shorturl.redirect', $url->code) }}">{{ $url->code }}</a></td>
                                 <td>{{ $url->counter }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.edit', $url->id) }}" role="button">Edit</a>
