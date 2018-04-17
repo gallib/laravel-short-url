@@ -5,7 +5,7 @@
         <h1 class="text-center mb-5">Laravel Short Url</h1>
         @if (session('short_url'))
             <div class="alert alert-success" role="alert">
-                Your shortened url is: <a class="font-weight-bold" href="{{ session('short_url') }}" title="your shortened url">{{ session('short_url') }}</a>
+                Your shortened url is: <a class="font-weight-bold" href="{{ session('short_url') }}" title="your shortened url">{{ session('short_url') }}</a> (<a class="copy-clipboard" href="javascript:void(0);" data-clipboard-text="{{ session('short_url') }}">Copy link to clipboard</a>)
             </div>
         @endif
         <form method="POST" action="{{ route('shorturl.url.update', $url->id) }}">
@@ -39,3 +39,14 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <script>
+        var clipboard = new ClipboardJS('.copy-clipboard');
+
+        clipboard.on('success', function(e) {
+            e.trigger.innerText = 'Copied!';
+        });
+    </script>
+@endpush
