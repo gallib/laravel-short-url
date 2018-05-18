@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Gallib\ShortUrl\Parsers\UrlParser;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -70,6 +71,46 @@ abstract class TestCase extends OrchestraTestCase
     }
 
     /**
+     * Mock UrlParser class
+     *
+     * @return void
+     */
+    protected function mockUrlParser()
+    {
+        $mock = \Mockery::mock(UrlParser::class, [
+            new \GuzzleHttp\Client,
+            new \Symfony\Component\DomCrawler\Crawler
+        ])->makePartial();
+
+        $mock
+            ->shouldReceive('getBody')
+            ->andReturn($this->getUrlBody());
+
+        $this->app->instance('Gallib\ShortUrl\Parsers\UrlParser', $mock);
+    }
+
+    /**
+     * Get an url body
+     *
+     * @return string
+     */
+    protected function getUrlBody()
+    {
+        return '
+            <!doctype html>
+            <html lang="en">
+                <head>
+                    <meta name="description" content="a test description">
+                    <title>a test title</title>
+                </head>
+                <body>
+                    Testing Laravel Short Url
+                </body>
+            </html>
+        ';
+    }
+
+    /**
      * Create an url.
      *
      * @param  array  $parameters
@@ -77,6 +118,8 @@ abstract class TestCase extends OrchestraTestCase
      */
     public function createUrl(array $parameters = [])
     {
+        $this->mockUrlParser();
+
         $parameters = array_merge(['url' => 'https://laravel.com'], $parameters);
 
         return $this->postJson(route('shorturl.url.store'), $parameters)->json();

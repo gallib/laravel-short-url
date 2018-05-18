@@ -97,4 +97,13 @@ class UrlTest extends TestCase
 
         $this->assertEquals($url['counter'], 0);
     }
+
+    /** @test */
+    public function title_and_description_are_fetched_on_creation()
+    {
+        $url = $this->createUrl();
+
+        $this->assertEquals($url['title'], 'a test title');
+        $this->assertEquals($url['description'], 'a test description');
+    }
 }
