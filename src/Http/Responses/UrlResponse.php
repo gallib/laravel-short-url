@@ -36,11 +36,13 @@ class UrlResponse implements Responsable
 
         if ($request->wantsJson()) {
             return response([
-                'id'        => $this->url->id,
-                'code'      => $this->url->code,
-                'url'       => $this->url->url,
-                'short_url' => $shortUrl,
-                'counter'   => $this->url->counter,
+                'id'          => $this->url->id,
+                'code'        => $this->url->code,
+                'title'       => $this->url->title,
+                'description' => $this->url->description,
+                'url'         => $this->url->url,
+                'short_url'   => $shortUrl,
+                'counter'     => $this->url->counter,
             ], 201);
         }
 

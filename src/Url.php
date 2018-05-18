@@ -22,4 +22,22 @@ class Url extends Model
         'url',
         'code',
     ];
+
+    /**
+     * Boot the model.
+     *
+     * @return  void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($url) {
+            app()->make('Gallib\ShortUrl\Parsers\UrlParser')->setUrlInfos($url);
+        });
+
+        static::updating(function ($url) {
+            app()->make('Gallib\ShortUrl\Parsers\UrlParser')->setUrlInfos($url);
+        });
+    }
 }

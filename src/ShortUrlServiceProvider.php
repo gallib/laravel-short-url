@@ -2,6 +2,8 @@
 
 namespace Gallib\ShortUrl;
 
+use Gallib\ShortUrl\Parsers\UrlParser;
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
 class ShortUrlServiceProvider extends ServiceProvider
@@ -46,5 +48,9 @@ class ShortUrlServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(ShortUrl::class, 'shorturl');
+
+        $this->app->bind('Gallib\ShortUrl\Parsers\UrlParser', function ($app) {
+            return new UrlParser(new Client());
+        });
     }
 }

@@ -14,7 +14,9 @@
         "illuminate/contracts": "5.6.*",
         "illuminate/database": "5.6.*",
         "illuminate/routing": "5.6.*",
-        "illuminate/support": "5.6.*"
+        "illuminate/support": "5.6.*",
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/dom-crawler": "^4.1"
     },
     "require-dev": {
         "orchestra/testbench": "~3.0",
