@@ -71,7 +71,7 @@ abstract class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Mock UrlParser class
+     * Mock UrlParser class.
      *
      * @return void
      */
@@ -79,7 +79,7 @@ abstract class TestCase extends OrchestraTestCase
     {
         $mock = \Mockery::mock(UrlParser::class, [
             new \GuzzleHttp\Client,
-            new \Symfony\Component\DomCrawler\Crawler
+            new \Symfony\Component\DomCrawler\Crawler,
         ])->makePartial();
 
         $mock
@@ -90,7 +90,7 @@ abstract class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Get an url body
+     * Get an url body.
      *
      * @return string
      */
