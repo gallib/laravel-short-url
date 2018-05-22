@@ -52,5 +52,7 @@ class ShortUrlServiceProvider extends ServiceProvider
         $this->app->bind(UrlParser::class, function ($app) {
             return new UrlParser(new Client());
         });
+
+        $this->app->alias(UrlParser::class, 'url-parser');
     }
 }

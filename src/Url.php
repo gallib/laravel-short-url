@@ -33,11 +33,11 @@ class Url extends Model
         parent::boot();
 
         static::creating(function ($url) {
-            app()->make('Gallib\ShortUrl\Parsers\UrlParser')->setUrlInfos($url);
+            app()->make('url-parser')->setUrlInfos($url);
         });
 
         static::updating(function ($url) {
-            app()->make('Gallib\ShortUrl\Parsers\UrlParser')->setUrlInfos($url);
+            app()->make('url-parser')->setUrlInfos($url);
         });
     }
 }
