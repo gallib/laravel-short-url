@@ -49,7 +49,7 @@ class ShortUrlServiceProvider extends ServiceProvider
 
         $this->app->alias(ShortUrl::class, 'shorturl');
 
-        $this->app->bind('Gallib\ShortUrl\Parsers\UrlParser', function ($app) {
+        $this->app->bind(UrlParser::class, function ($app) {
             return new UrlParser(new Client());
         });
     }
