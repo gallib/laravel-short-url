@@ -21,9 +21,9 @@ finally, paste ``` ShortUrl::routes(); ``` at the end of ``` routes/web.php ```
 
 ## Configuration
 
-Laravel Short Url configuration file could be found on ``` config/shorturl.php ```
+Laravel Short Url configuration file can be found on ``` config/shorturl.php ```
 
--- **blacklist** : Allows to blacklist urls. Keywords can be either an url, a keyword or an extension
+- **blacklist** : Allows to blacklist urls. Keywords can be either an url, a keyword or an extension
 
 ### Advanced configuration
 
