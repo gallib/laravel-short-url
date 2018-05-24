@@ -106,4 +106,40 @@ class UrlTest extends TestCase
         $this->assertEquals($url['title'], 'a test title');
         $this->assertEquals($url['description'], 'a test description');
     }
+
+    /** @test */
+    public function an_extension_could_be_blacklisted()
+    {
+        \Config::set('shorturl.blacklist', '.test');
+
+        $url = ['url' => 'https://laravel.test'];
+
+        $response = $this->createUrl($url);
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
+
+    /** @test */
+    public function a_keyword_could_be_blacklisted()
+    {
+        \Config::set('shorturl.blacklist', 'test');
+
+        $url = ['url' => 'https://test.com'];
+
+        $response = $this->createUrl($url);
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
+
+    /** @test */
+    public function an_url_could_be_blacklisted()
+    {
+        \Config::set('shorturl.blacklist', '//test.com');
+
+        $url = ['url' => 'https://test.com'];
+
+        $response = $this->createUrl($url);
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
 }

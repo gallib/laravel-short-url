@@ -29,4 +29,40 @@ class UpdateUrlTest extends TestCase
 
         $this->assertEquals($response['url'], $url['url']);
     }
+
+    /** @test */
+    public function an_extension_could_be_blacklisted_on_update()
+    {
+        \Config::set('shorturl.blacklist', '.test');
+
+        $url = array_merge($this->createUrl(), ['url' => 'https://laravel.test']);
+
+        $response = $this->putJson(route('shorturl.url.update', ['id' => $url['id']]), $url)->json();
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
+
+    /** @test */
+    public function a_keyword_could_be_blacklisted_on_update()
+    {
+        \Config::set('shorturl.blacklist', 'test');
+
+        $url = array_merge($this->createUrl(), ['url' => 'https://test.com']);
+
+        $response = $this->putJson(route('shorturl.url.update', ['id' => $url['id']]), $url)->json();
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
+
+    /** @test */
+    public function an_url_could_be_blacklisted_on_update()
+    {
+        \Config::set('shorturl.blacklist', '//test.com');
+
+        $url = array_merge($this->createUrl(), ['url' => 'https://test.com']);
+
+        $response = $this->putJson(route('shorturl.url.update', ['id' => $url['id']]), $url)->json();
+
+        $this->assertArrayHasKey('url', $response['errors']);
+    }
 }
