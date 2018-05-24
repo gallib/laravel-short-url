@@ -2,6 +2,7 @@
 
 namespace Gallib\ShortUrl\Http\Requests;
 
+use Gallib\ShortUrl\Rules\Blacklist;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UrlRequest extends FormRequest
@@ -30,7 +31,7 @@ class UrlRequest extends FormRequest
         }
 
         return [
-            'url'  => 'required|url',
+            'url'  => ['required', 'url', new Blacklist()],
             'code' => 'max:255'.$uniqueCode,
         ];
     }
