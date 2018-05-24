@@ -9,8 +9,8 @@ class Blacklist implements Rule
     /**
      * @var array
      */
-
     protected $blacklist = [];
+
     /**
      * Create a new rule instance.
      *
@@ -30,7 +30,7 @@ class Blacklist implements Rule
      */
     public function passes($attribute, $value)
     {
-        return !str_contains($value, $this->blacklist);
+        return ! str_contains($value, $this->blacklist);
     }
 
     /**
