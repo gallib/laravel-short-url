@@ -8,6 +8,9 @@
                 Your shortened url has been deleted!
             </div>
         @endif
+        <div class="mb-2 text-right">
+            <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.create') }}" role="button">Add url</a>
+        </div>
         <table class="table">
             <tr>
                 <th>Url</th>
