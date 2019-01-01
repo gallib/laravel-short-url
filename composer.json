@@ -9,7 +9,6 @@
             "email": "alain@gallib.net"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "illuminate/contracts": "5.7.*",
         "illuminate/database": "5.7.*",
