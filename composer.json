@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "illuminate/contracts": "5.7.*",
-        "illuminate/database": "5.7.*",
-        "illuminate/routing": "5.7.*",
-        "illuminate/support": "5.7.*",
+        "illuminate/contracts": "5.8.*",
+        "illuminate/database": "5.8.*",
+        "illuminate/routing": "5.8.*",
+        "illuminate/support": "5.8.*",
         "guzzlehttp/guzzle": "~6.3",
         "symfony/dom-crawler": "^4.2"
     },
