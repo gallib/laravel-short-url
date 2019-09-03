@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php" : "^7.2",
         "illuminate/contracts": "^5.8|^6.0",
         "illuminate/database": "^5.8|^6.0",
         "illuminate/routing": "^5.8|^6.0",
