@@ -41,7 +41,7 @@ class UrlRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         $data = parent::validationData();
 
