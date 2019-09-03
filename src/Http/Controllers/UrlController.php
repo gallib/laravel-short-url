@@ -42,7 +42,7 @@ class UrlController extends Controller
     {
         $url = Url::create([
             'url'  => $request->get('url'),
-            'code' => $request->get('code') ? str_slug($request->get('code')) : \Hasher::generate(),
+            'code' => $request->get('code') ? \Str::slug($request->get('code')) : \Hasher::generate(),
         ]);
 
         return new UrlResponse($url);
