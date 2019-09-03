@@ -43,7 +43,7 @@ class UrlTest extends TestCase
         $response = $this->createUrl($url);
 
         $this->assertEquals($response['code'], $url['code']);
-        $this->assertContains($url['code'], $response['short_url']);
+        $this->assertStringContainsString($url['code'], $response['short_url']);
     }
 
     /** @test */
