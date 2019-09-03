@@ -43,5 +43,10 @@
                 "ShortUrl": "Gallib\\ShortUrl\\Facades\\ShortUrl"
             }
         }
-    }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
