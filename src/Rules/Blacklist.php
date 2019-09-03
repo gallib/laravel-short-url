@@ -30,7 +30,7 @@ class Blacklist implements Rule
      */
     public function passes($attribute, $value)
     {
-        return ! str_contains($value, $this->blacklist);
+        return ! \Str::contains($value, $this->blacklist);
     }
 
     /**
