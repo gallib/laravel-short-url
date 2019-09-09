@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RedirectTest extends TestCase
@@ -27,6 +28,18 @@ class RedirectTest extends TestCase
 
         $this->assertEquals($url['url'], $response->headers->get('Location'));
         $this->assertEquals(301, $response->status());
+    }
+
+    /** @test */
+    public function an_url_could_expire()
+    {
+        $url = $this->createUrl(['code' => 'abcde', 'expires_at' => Carbon::now()->add('PT10M')]);
+
+        Carbon::setTestNow(Carbon::now()->addMinutes(11));
+
+        $response = $this->get(route('shorturl.redirect', ['code' => $url['code']]));
+
+        $this->assertEquals(410, $response->status());
     }
 
     /** @test */
