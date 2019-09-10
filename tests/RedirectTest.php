@@ -43,6 +43,19 @@ class RedirectTest extends TestCase
     }
 
     /** @test */
+    public function an_url_with_expiration_date_in_future_is_redirected()
+    {
+        $url = ['url' => 'https://laravel.com', 'code' => 'abcde', 'expires_at' => Carbon::now()->add('PT10M')];
+
+        $this->createUrl($url);
+
+        $response = $this->get(route('shorturl.redirect', ['code' => $url['code']]));
+
+        $this->assertEquals($url['url'], $response->headers->get('Location'));
+        $this->assertEquals(302, $response->status());
+    }
+
+    /** @test */
     public function it_redirects_to_the_correct_url_after_update()
     {
         $url = $this->createUrl(['code' => 'abcde']);
