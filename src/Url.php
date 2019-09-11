@@ -58,18 +58,18 @@ class Url extends Model
     }
 
     /**
-     * Return whether an url has expired
+     * Return whether an url has expired.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasExpired(): bool
     {
-        if (!$this->couldExpire()) {
+        if (! $this->couldExpire()) {
             return false;
         }
 
         $expiresAt = new Carbon($this->expires_at);
 
-        return !$expiresAt->isFuture();
+        return ! $expiresAt->isFuture();
     }
 }
