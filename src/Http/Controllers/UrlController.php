@@ -2,6 +2,7 @@
 
 namespace Gallib\ShortUrl\Http\Controllers;
 
+use Carbon\Carbon;
 use Gallib\ShortUrl\Url;
 use Illuminate\Routing\Controller;
 use Gallib\ShortUrl\Http\Requests\UrlRequest;
@@ -40,10 +41,16 @@ class UrlController extends Controller
      */
     public function store(UrlRequest $request)
     {
-        $url = Url::create([
+        $data = [
             'url'  => $request->get('url'),
             'code' => $request->get('code') ? \Str::slug($request->get('code')) : \Hasher::generate(),
-        ]);
+        ];
+
+        if ($request->filled('expires_at')) {
+            $data['expires_at'] = Carbon::parse($request->get('expires_at'))->toDateTimeString();
+        }
+
+        $url = Url::create($data);
 
         return new UrlResponse($url);
     }
@@ -74,7 +81,16 @@ class UrlController extends Controller
 
         \Cache::forget("url.{$url['code']}");
 
-        $url->update($request->all());
+        $data = [
+            'url'  => $request->get('url'),
+            'code' => $request->get('code'),
+        ];
+
+        if ($request->filled('expires_at')) {
+            $data['expires_at'] = Carbon::parse($request->get('expires_at'))->toDateTimeString();
+        }
+
+        $url->update($data);
 
         return new UrlResponse($url);
     }

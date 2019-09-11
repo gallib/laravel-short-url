@@ -34,7 +34,18 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-8 text-right">By <a href="https://github.com/gallib/laravel-short-url" title="by gallib/laravel-short-url" target="_blank">Gallib/laravel-short-url</a></div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="expires_at">Expires at (optional)</label>
+                        <input type="datetime-local" class="form-control {{ $errors->has('expires_at') ? 'is-invalid' : '' }}" id="expires_at" name="expires_at" placeholder="Set your expiration date" value="{{ old('expires_at', ($url->couldExpire() ? $url->expires_at->format('Y-m-d\TH:i') : null)) }}">
+                        @if ($errors->has('expires_at'))
+                            <small id="code-error" class="form-text text-danger">
+                                {{ $errors->first('expires_at') }}
+                            </small>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-4 text-right">By <a href="https://github.com/gallib/laravel-short-url" title="by gallib/laravel-short-url" target="_blank">Gallib/laravel-short-url</a></div>
             </div>
         </form>
     </div>

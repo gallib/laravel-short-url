@@ -21,9 +21,13 @@ class RedirectController extends Controller
         });
 
         if ($url !== null) {
+            if ($url->hasExpired()) {
+                abort(410);
+            }
+
             $url->increment('counter');
 
-            return redirect()->away($url->url, 301);
+            return redirect()->away($url->url, $url->couldExpire() ? 302 : 301);
         }
 
         abort(404);

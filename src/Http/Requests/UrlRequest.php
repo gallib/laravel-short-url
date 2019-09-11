@@ -33,6 +33,7 @@ class UrlRequest extends FormRequest
         return [
             'url'  => ['required', 'url', new Blacklist()],
             'code' => 'max:255'.$uniqueCode,
+            'expires_at' => 'date|after:now|nullable',
         ];
     }
 

@@ -43,6 +43,7 @@ class UrlResponse implements Responsable
                 'url'         => $this->url->url,
                 'short_url'   => $shortUrl,
                 'counter'     => $this->url->counter,
+                'expires_at'  => $this->url->expires_at,
             ], 201);
         }
 
