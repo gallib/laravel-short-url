@@ -1,13 +1,8 @@
 <p align="center">
-    <img width="400" height="42" src="https://raw.githubusercontent.com/caneco/laravel-short-url/master/art/logo.png" alt="Laravel Short URL logo" />
+    <img width="80%" src="https://raw.githubusercontent.com/caneco/laravel-short-url/master/art/logo.png" alt="Laravel Short URL logo" />
 </p>
 
-# Laravel Short Url
-
-<p>
-    [![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url)
-    [![StyleCI](https://styleci.io/repos/122629531/shield?branch=master)](https://styleci.io/repos/122629531)
-</p>
+# Laravel Short Url [![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url) [![StyleCI](https://styleci.io/repos/122629531/shield?branch=master)](https://styleci.io/repos/122629531)
 
 Laravel Short Url is a package allowing you to shorten urls.
 
