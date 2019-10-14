@@ -1,4 +1,13 @@
-# Laravel Short Url [![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url) [![StyleCI](https://styleci.io/repos/122629531/shield?branch=master)](https://styleci.io/repos/122629531)
+<p align="center">
+    <img width="400" height="42" src="https://raw.githubusercontent.com/caneco/laravel-short-url/master/art/logo.png" alt="Laravel Short URL logo" />
+</p>
+
+# Laravel Short Url
+
+<p>
+    [![Build Status](https://travis-ci.org/gallib/laravel-short-url.svg?branch=master)](https://travis-ci.org/gallib/laravel-short-url)
+    [![StyleCI](https://styleci.io/repos/122629531/shield?branch=master)](https://styleci.io/repos/122629531)
+</p>
 
 Laravel Short Url is a package allowing you to shorten urls.
 
@@ -37,3 +46,7 @@ this allows you to add middlewares or prefix routes.
 ## Nice!
 
 Laravel short url is now set up on your homepage.
+
+## Credits
+- Created by [Alain](https://twitter.com/gallib_net)
+- Logo by [Caneco](https://twitter.com/caneco)
