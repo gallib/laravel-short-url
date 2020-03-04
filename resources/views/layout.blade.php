@@ -18,6 +18,10 @@
             .wrapper {
                 min-height: 100vh;
             }
+
+            .logo-title {
+                max-height: 100px;
+            }
         </style>
 
         @stack('styles')
