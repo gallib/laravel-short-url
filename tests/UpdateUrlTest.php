@@ -65,4 +65,19 @@ class UpdateUrlTest extends TestCase
 
         $this->assertArrayHasKey('url', $response['errors']);
     }
+
+    /** @test */
+    public function a_user_id_could_be_updated_on_update()
+    {
+        $url = $this->createUrl();
+
+        $user = $this->createUser();
+
+        $this->actingAs($user);
+
+        $response = $this->putJson(route('shorturl.url.update', ['id' => $url['id']]), $url)->json();
+
+        $this->assertNotNull($response['user_id']);
+        $this->assertEquals($response['user_id'], $user->id);
+    }
 }

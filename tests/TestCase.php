@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Gallib\ShortUrl\Parsers\UrlParser;
+use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -13,6 +14,8 @@ abstract class TestCase extends OrchestraTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->setUpDatabase($this->app);
     }
 
     /**
@@ -33,6 +36,20 @@ abstract class TestCase extends OrchestraTestCase
         ]);
 
         \ShortUrl::routes();
+    }
+
+    /**
+     * Set up the database.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function setUpDatabase($app)
+    {
+        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -123,5 +140,20 @@ abstract class TestCase extends OrchestraTestCase
         $parameters = array_merge(['url' => 'https://laravel.com'], $parameters);
 
         return $this->postJson(route('shorturl.url.store'), $parameters)->json();
+    }
+
+    /**
+     * Create a user.
+     *
+     * @param  array  $parameters
+     * @return User
+     */
+    public function createUser(array $parameters = [])
+    {
+        $provider = config('auth.guards.api.provider');
+        $model = config("auth.providers.{$provider}.model");
+        $parameters = array_merge(['name' => 'Thibault Timeo'], $parameters);
+
+        return $model::create(['name' => 'Test']);
     }
 }

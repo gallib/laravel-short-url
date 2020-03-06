@@ -181,4 +181,25 @@ class UrlTest extends TestCase
 
         $this->assertArrayHasKey('expires_at', $response['errors']);
     }
+
+    /** @test */
+    public function user_field_could_be_null()
+    {
+        $response = $this->createUrl();
+
+        $this->assertNull($response['user_id']);
+    }
+
+    /** @test */
+    public function user_field_is_set_when_a_user_is_logged_in()
+    {
+        $user = $this->createUser();
+
+        $this->actingAs($user);
+
+        $response = $this->createUrl();
+
+        $this->assertNotNull($response['user_id']);
+        $this->assertEquals($response['user_id'], $user->id);
+    }
 }
