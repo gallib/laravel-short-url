@@ -3,10 +3,10 @@
 namespace Gallib\ShortUrl\Http\Controllers;
 
 use Carbon\Carbon;
-use Gallib\ShortUrl\Url;
-use Illuminate\Routing\Controller;
 use Gallib\ShortUrl\Http\Requests\UrlRequest;
 use Gallib\ShortUrl\Http\Responses\UrlResponse;
+use Gallib\ShortUrl\Url;
+use Illuminate\Routing\Controller;
 
 class UrlController extends Controller
 {

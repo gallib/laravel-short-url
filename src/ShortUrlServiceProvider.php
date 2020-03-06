@@ -2,8 +2,8 @@
 
 namespace Gallib\ShortUrl;
 
-use GuzzleHttp\Client;
 use Gallib\ShortUrl\Parsers\UrlParser;
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
 class ShortUrlServiceProvider extends ServiceProvider

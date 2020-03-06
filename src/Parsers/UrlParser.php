@@ -2,10 +2,10 @@
 
 namespace Gallib\ShortUrl\Parsers;
 
-use GuzzleHttp\Client;
 use Gallib\ShortUrl\Url;
-use Symfony\Component\DomCrawler\Crawler;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Symfony\Component\DomCrawler\Crawler;
 
 class UrlParser
 {
