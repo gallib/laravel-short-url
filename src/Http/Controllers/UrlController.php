@@ -42,8 +42,9 @@ class UrlController extends Controller
     public function store(UrlRequest $request)
     {
         $data = [
-            'url'  => $request->get('url'),
+            'url' => $request->get('url'),
             'code' => $request->get('code') ? \Str::slug($request->get('code')) : \Hasher::generate(),
+            'user_id' => optional(auth()->user())->id,
         ];
 
         if ($request->filled('expires_at')) {
@@ -82,8 +83,9 @@ class UrlController extends Controller
         \Cache::forget("url.{$url['code']}");
 
         $data = [
-            'url'  => $request->get('url'),
+            'url' => $request->get('url'),
             'code' => $request->get('code'),
+            'user_id' => optional(auth()->user())->id,
         ];
 
         if ($request->filled('expires_at')) {

@@ -23,6 +23,7 @@ class Url extends Model
         'url',
         'code',
         'expires_at',
+        'user_id',
     ];
 
     /**
@@ -71,5 +72,17 @@ class Url extends Model
         $expiresAt = new Carbon($this->expires_at);
 
         return ! $expiresAt->isFuture();
+    }
+
+    /**
+     * Get the user that created the url.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        $provider = config('auth.guards.api.provider');
+
+        return $this->belongsTo(config("auth.providers.{$provider}.model"));
     }
 }

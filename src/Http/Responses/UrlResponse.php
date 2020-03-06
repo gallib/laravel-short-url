@@ -44,6 +44,7 @@ class UrlResponse implements Responsable
                 'short_url'   => $shortUrl,
                 'counter'     => $this->url->counter,
                 'expires_at'  => $this->url->expires_at,
+                'user_id'     => optional($this->url->user)->id,
             ], 201);
         }
 
