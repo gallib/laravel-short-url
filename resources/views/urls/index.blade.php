@@ -19,6 +19,7 @@
                 <th>Url</th>
                 <th>Short Url</th>
                 <th>Counter</th>
+                <th>User</th>
                 <th></th>
             </tr>
             @foreach ($urls as $url)
@@ -26,6 +27,7 @@
                     <td>{{ $url->url }}</td>
                     <td><a href="{{ route('shorturl.redirect', $url->code) }}">{{ $url->code }}</a></td>
                     <td>{{ $url->counter }}</td>
+                    <td>{{ optional($url->user)->name }}</td>
                     <td>
                         <button class="btn btn-sm btn-success" data-clipboard-text="{{ route('shorturl.redirect', $url->code) }}">Copy</button>
                         <a class="btn btn-sm btn-primary" href="{{ route('shorturl.url.edit', $url->id) }}" role="button">Edit</a>
