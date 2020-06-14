@@ -15,7 +15,7 @@ class AddUserIdToUrls extends Migration
     {
         Schema::table('shorturl_urls', function (Blueprint $table) {
             $table->integer('user_id')->nullable()->unsigned()->after('expires_at');
-            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 }
