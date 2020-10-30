@@ -5,6 +5,13 @@ namespace Gallib\ShortUrl;
 class ShortUrl
 {
     /**
+     * Indicates if migrations will be run.
+     *
+     * @var bool
+     */
+    public static $runsMigrations = true;
+
+    /**
      * Register the routes to create urls.
      *
      * @return void
@@ -48,5 +55,15 @@ class ShortUrl
         $this->createRoutes();
         $this->manageRoutes();
         $this->redirectRoute();
+    }
+
+    /**
+     * Configure package to not register its migrations.
+     *
+     * @return static
+     */
+    public static function ignoreMigrations()
+    {
+        static::$runsMigrations = false;
     }
 }

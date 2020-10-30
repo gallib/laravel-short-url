@@ -38,6 +38,16 @@ Instead of adding ``` ShortUrl::routes(); ``` you can call three separates metho
 
 this allows you to add middlewares or prefix routes.
 
+### Migration Customization
+
+If you are not going to use Short Url's default migrations, you should call the
+`ShortUrl::ignoreMigrations();`  method in the `register` method of your `AppServiceProvider`.
+You may export the default migrations using
+
+```
+php artisan vendor:publish --tag=shorturl-migrations
+```
+
 ## Nice!
 
 Laravel short url is now set up on your homepage.

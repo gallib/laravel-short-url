@@ -18,7 +18,11 @@ class ShortUrlServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'shorturl');
 
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            $this->registerMigrations();
+
+            $this->publishes([
+                __DIR__.'/../database/migrations' => database_path('migrations'),
+            ], 'shorturl-migrations');
 
             $this->publishes([
                 __DIR__.'/../config/shorturl.php' => config_path('shorturl.php'),
@@ -31,6 +35,18 @@ class ShortUrlServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../assets' => public_path('gallib/shorturl'),
             ], 'shorturl-assets');
+        }
+    }
+
+    /**
+     * Register migration files.
+     *
+     * @return void
+     */
+    protected function registerMigrations()
+    {
+        if (ShortUrl::$runsMigrations) {
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         }
     }
 
