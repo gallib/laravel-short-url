@@ -5,6 +5,7 @@ namespace Tests;
 use Gallib\ShortUrl\Parsers\UrlParser;
 use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Tests\Stubs\User;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -36,6 +37,9 @@ abstract class TestCase extends OrchestraTestCase
         ]);
 
         \ShortUrl::routes();
+
+        $authProvider = config('auth.guards.api.provider');
+        $app['config']->set("auth.providers.{$authProvider}.model", User::class);
     }
 
     /**
@@ -150,10 +154,6 @@ abstract class TestCase extends OrchestraTestCase
      */
     public function createUser(array $parameters = [])
     {
-        $provider = config('auth.guards.api.provider');
-        $model = config("auth.providers.{$provider}.model");
-        $parameters = array_merge(['name' => 'Thibault Timeo'], $parameters);
-
-        return $model::create(['name' => 'Test']);
+        return User::create(['name' => 'Test']);
     }
 }
