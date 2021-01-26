@@ -10,11 +10,11 @@
         }
     ],
     "require": {
-        "illuminate/auth": "^5.8|^6.0|^7.0|^8.0",
-        "illuminate/contracts": "^5.8|^6.0|^7.0|^8.0",
-        "illuminate/database": "^5.8|^6.20.12|^7.30.3|^8.22.1",
-        "illuminate/routing": "^5.8|^6.0|^7.0|^8.0",
         "php" : "^7.3.0|^8.0.0",
+        "illuminate/auth": "^7.0|^8.0",
+        "illuminate/contracts": "^7.0|^8.0",
+        "illuminate/database": "^7.30.3|^8.22.1",
+        "illuminate/routing": "^7.0|^8.0",
         "illuminate/support": "^5.8|^6.0|^7.0|^8.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "symfony/dom-crawler": "^4.4|^5.0"
