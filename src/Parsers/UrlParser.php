@@ -22,7 +22,7 @@ class UrlParser
     /**
      * Create a new instance.
      *
-     * @param  \GuzzleHttp\Client $client
+     * @param  \GuzzleHttp\Client  $client
      * @return void
      */
     public function __construct(Client $client)
@@ -33,7 +33,7 @@ class UrlParser
     /**
      * Get body of given url.
      *
-     * @param  string $url
+     * @param  string  $url
      * @return string
      */
     public function getBody($url)
@@ -51,7 +51,7 @@ class UrlParser
     /**
      * Parse the url to collect additionnal informations.
      *
-     * @param  \Gallib\ShortUrl\Url $url
+     * @param  \Gallib\ShortUrl\Url  $url
      * @return void
      */
     public function setUrlInfos(Url $url)

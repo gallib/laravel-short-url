@@ -38,7 +38,7 @@ class Url extends Model
     /**
      * Boot the model.
      *
-     * @return  void
+     * @return void
      */
     protected static function boot()
     {
@@ -86,7 +86,7 @@ class Url extends Model
         $userModel = config("auth.providers.{$provider}.model");
 
         if (! class_exists($userModel)) {
-            throw new \Exception("User model not found");
+            throw new \Exception('User model not found');
         }
 
         return $this->belongsTo($userModel);
