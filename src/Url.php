@@ -81,8 +81,14 @@ class Url extends Model
      */
     public function user()
     {
-        $provider = config('auth.guards.api.provider');
+        $provider = config('auth.guards.web.provider');
 
-        return $this->belongsTo(config("auth.providers.{$provider}.model"));
+        $userModel = config("auth.providers.{$provider}.model");
+
+        if (! class_exists($userModel)) {
+            throw new \Exception("User model not found");
+        }
+
+        return $this->belongsTo($userModel);
     }
 }
