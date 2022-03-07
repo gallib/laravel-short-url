@@ -22,7 +22,6 @@
     "require-dev": {
         "orchestra/testbench": "^7.0",
         "phpunit/phpunit": "^9.5",
-        "codedungeon/phpunit-result-printer": "dev-master",
         "mockery/mockery": "^1.5"
     },
     "autoload": {

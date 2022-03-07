@@ -8,7 +8,6 @@
          processIsolation="false"
          stopOnFailure="false"
          bootstrap="vendor/autoload.php"
-         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
 >
     <testsuites>
         <testsuite name="ShortUrl Test Suite">
